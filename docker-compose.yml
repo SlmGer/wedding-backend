@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: wedding-postgres
+    environment:
+      POSTGRES_DB: weddingdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: didi
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ../wedding-backend
+    image: wedding-backend-image
+    container_name: wedding-backend-container
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/weddingdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: didi
+      SPRING_PROFILES_ACTIVE: prod
+
+  frontend:
+    build: ../wedding-frontend
+    ports:
+      - "4200:4200"
+volumes:
+  pgdata:
