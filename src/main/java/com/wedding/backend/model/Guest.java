@@ -22,6 +22,6 @@ public class Guest {
 
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    @OneToOne(mappedBy = "guest", cascade = CascadeType.ALL)
-    private Rsvp rsvp;
+    /*@OneToOne(mappedBy = "guest", cascade = CascadeType.ALL)
+    private Rsvp rsvp;*/
 }

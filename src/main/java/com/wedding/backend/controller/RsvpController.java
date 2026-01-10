@@ -19,11 +19,11 @@ public class RsvpController {
         this.rsvpService = rsvpService;
     }
 
-    @PostMapping
+    /*@PostMapping
     public ResponseEntity<Void> submit(@RequestBody RsvpRequest request){
-        rsvpService.submitRsvp(request);
+        rsvpService.save(request);
         return ResponseEntity.ok().build();
-    }
+    }*/
 
     @GetMapping
     public List<Rsvp> getAll(){
