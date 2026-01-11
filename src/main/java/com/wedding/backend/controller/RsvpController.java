@@ -1,6 +1,7 @@
 package com.wedding.backend.controller;
 
 import com.wedding.backend.dto.RsvpRequest;
+import com.wedding.backend.dto.RsvpStats;
 import com.wedding.backend.model.Rsvp;
 import com.wedding.backend.service.RsvpService;
 import org.springframework.http.ResponseEntity;
@@ -35,9 +36,14 @@ public class RsvpController {
         );
     }
 
-
     @GetMapping
     public List<Rsvp> getAll(){
         return rsvpService.findAll();
     }
+
+    @GetMapping("/stats")
+    public RsvpStats stats() {
+        return rsvpService.getStats();
+    }
+
 }

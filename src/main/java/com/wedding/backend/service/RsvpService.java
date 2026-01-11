@@ -1,6 +1,7 @@
 package com.wedding.backend.service;
 
 import com.wedding.backend.dto.RsvpRequest;
+import com.wedding.backend.dto.RsvpStats;
 import com.wedding.backend.model.Rsvp;
 import com.wedding.backend.repository.RsvpRepository;
 import org.springframework.stereotype.Service;
@@ -64,4 +65,20 @@ public class RsvpService {
     public void delete(Long id) {
         rsvpRepository.deleteById(id);
     }
+
+    public RsvpStats getStats() {
+        long total = rsvpRepository.count();
+
+        return new RsvpStats(
+                total,
+                rsvpRepository.countByPresenceTrue(),
+                rsvpRepository.countByPresenceFalse(),
+                rsvpRepository.sumEnfants(),
+                rsvpRepository.countByMairieTrue(),
+                rsvpRepository.countByEgliseTrue(),
+                rsvpRepository.countByVindhonneurTrue(),
+                rsvpRepository.countByReceptionTrue()
+        );
+    }
+
 }
