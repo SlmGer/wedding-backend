@@ -7,7 +7,6 @@ import lombok.Setter;
 @Getter
 public class RsvpRequest {
     private String guestName;
-    private String email;
 
     private boolean present;
     private Integer enfants;
