@@ -19,7 +19,7 @@ public class Accommodation {
 
     private String googleMapsUrl;
 
-    private double distanceKm;
+    private Integer distance;
 
-    //private boolean active = true;
+    private boolean active = true;
 }

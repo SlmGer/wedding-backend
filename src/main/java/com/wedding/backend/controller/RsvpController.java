@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/rsvp")
@@ -20,10 +21,20 @@ public class RsvpController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> submit(@RequestBody RsvpRequest request){
-        rsvpService.submitRsvp(request);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Map<String, Object>> submit(@RequestBody RsvpRequest request) {
+
+        boolean updated = rsvpService.submitRsvp(request);
+
+        return ResponseEntity.ok(
+                Map.of(
+                        "updated", updated,
+                        "message", updated
+                                ? "Votre réponse a été mise à jour"
+                                : "Merci pour votre réponse"
+                )
+        );
     }
+
 
     @GetMapping
     public List<Rsvp> getAll(){

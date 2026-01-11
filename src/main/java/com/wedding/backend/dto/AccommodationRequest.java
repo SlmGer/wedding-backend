@@ -7,12 +7,9 @@ import lombok.Setter;
 @Getter
 public class AccommodationRequest {
     private String name;
-
     private String imageUrl;
-
     private String googleMapsUrl;
+    private Integer distance;
 
-    private double distanceKm;
-
-    //private boolean active = true;
+    private boolean active = true;
 }

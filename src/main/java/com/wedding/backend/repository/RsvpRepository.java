@@ -6,5 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface RsvpRepository extends JpaRepository<Rsvp, Long> {
-    Optional<Rsvp> findByGuestId(Long guestId);
+    Optional<Rsvp> findByGuestNameIgnoreCase(String guestName);
+
+    boolean existsByGuestNameIgnoreCase(String guestName);
 }

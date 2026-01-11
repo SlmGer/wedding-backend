@@ -15,12 +15,8 @@ public class Rsvp {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "guest_id", nullable = false)
-    private Guest guest;
-
+    private String guestName;
     private boolean present;
-
     private Integer enfants;
 
     // alimentation

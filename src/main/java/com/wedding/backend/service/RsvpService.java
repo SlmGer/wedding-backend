@@ -1,42 +1,43 @@
 package com.wedding.backend.service;
 
 import com.wedding.backend.dto.RsvpRequest;
-import com.wedding.backend.model.Guest;
 import com.wedding.backend.model.Rsvp;
-import com.wedding.backend.repository.GuestRepository;
 import com.wedding.backend.repository.RsvpRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RsvpService {
-    private final GuestRepository guestRepository;
     private final RsvpRepository rsvpRepository;
 
-    public RsvpService(GuestRepository guestRepository, RsvpRepository rsvpRepository) {
-        this.guestRepository = guestRepository;
+    public RsvpService(RsvpRepository rsvpRepository) {
         this.rsvpRepository = rsvpRepository;
     }
 
-    public void submitRsvp(RsvpRequest request){
-        // 1. Guest create or find
-        Guest guest = guestRepository
-                .findByEmail(request.getEmail())
-                .orElseGet(() -> {
-                    Guest g = new Guest();
-                    g.setNom(request.getNom());
-                    g.setEmail(request.getEmail());
-                    return guestRepository.save(g);
-                });
+    public boolean submitRsvp(RsvpRequest request) {
 
-        // 2. RSVP create or update
-        Rsvp rsvp = rsvpRepository
-                .findByGuestId(guest.getId())
-                .orElse(new Rsvp());
+        Optional<Rsvp> existing = rsvpRepository
+                .findByGuestNameIgnoreCase(request.getGuestName());
 
-        rsvp.setGuest(guest);
-        guest.setRsvp(rsvp);
+        Rsvp rsvp;
+
+        if (existing.isPresent()) {
+            rsvp = existing.get(); // UPDATE
+        } else {
+            rsvp = new Rsvp();     // CREATE
+            rsvp.setGuestName(request.getGuestName());
+        }
+
+        applyRequest(rsvp, request);
+        rsvpRepository.save(rsvp);
+
+        return existing.isPresent(); // true = mise à jour
+    }
+
+    private void applyRequest(Rsvp rsvp, RsvpRequest request) {
+
         rsvp.setPresent(request.isPresent());
         rsvp.setEnfants(request.getEnfants());
 
@@ -47,15 +48,13 @@ public class RsvpService {
 
         rsvp.setMairie(request.isMairie());
         rsvp.setEglise(request.isEglise());
+        rsvp.setVinDHonneur(request.isVinDHonneur());
         rsvp.setReception(request.isReception());
 
-        rsvp.setVehicule(request.getVehicule());
-        rsvp.setCovoiturage(request.getCovoiturage());
+        rsvp.setVehicule(request.isVehicule());
+        rsvp.setCovoiturage(request.isCovoiturage());
 
         rsvp.setRemarque(request.getRemarque());
-
-        guestRepository.save(guest);
-        rsvpRepository.save(rsvp);
     }
 
     public List<Rsvp> findAll() {

@@ -16,15 +16,29 @@ public class AccommodationService {
         this.accommodationRepository = accommodationRepository;
     }
 
-    public Accommodation save(AccommodationRequest accommodationRequest) {
+    public Accommodation create(AccommodationRequest request) {
         Accommodation accommodation = new Accommodation();
-        accommodation.setName(accommodationRequest.getName());
-        accommodation.setImageUrl(accommodationRequest.getImageUrl());
-        //accommodation.setActive(accommodationRequest.isActive());
-        accommodation.setDistanceKm(accommodationRequest.getDistanceKm());
-        accommodation.setGoogleMapsUrl(accommodationRequest.getGoogleMapsUrl());
-        accommodationRepository.save(accommodation);
-        return accommodation;
+        applyRequest(accommodation, request);
+        return accommodationRepository.save(accommodation);
+    }
+
+    public Accommodation update(Long id, AccommodationRequest request) {
+        Accommodation accommodation = accommodationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Hébergement introuvable"));
+
+        applyRequest(accommodation, request);
+        return accommodationRepository.save(accommodation);
+    }
+
+    private void applyRequest(Accommodation accommodation, AccommodationRequest request) {
+        accommodation.setName(request.getName());
+        accommodation.setImageUrl(request.getImageUrl());
+        accommodation.setGoogleMapsUrl(request.getGoogleMapsUrl());
+        accommodation.setDistance(request.getDistance());
+
+        if (request.isActive()) {
+            accommodation.setActive(true);
+        }
     }
 
     public List<Accommodation> findAll(){

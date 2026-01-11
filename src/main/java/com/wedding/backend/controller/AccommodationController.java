@@ -23,8 +23,15 @@ public class AccommodationController {
     }
 
     @PostMapping
-    public Accommodation add(@RequestBody AccommodationRequest acc){
-        return accommodationService.save(acc);
+    public Accommodation create(@RequestBody AccommodationRequest request) {
+        return accommodationService.create(request);
+    }
+
+    @PutMapping("/{id}")
+    public Accommodation update(
+            @PathVariable Long id,
+            @RequestBody AccommodationRequest request) {
+        return accommodationService.update(id, request);
     }
 
     @DeleteMapping("/{id}")
