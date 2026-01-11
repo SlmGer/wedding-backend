@@ -76,7 +76,7 @@ public class RsvpService {
                 rsvpRepository.sumEnfants(),
                 rsvpRepository.countByMairieTrue(),
                 rsvpRepository.countByEgliseTrue(),
-                rsvpRepository.countByVindhonneurTrue(),
+                rsvpRepository.countByVinDHonneurTrue(),
                 rsvpRepository.countByReceptionTrue()
         );
     }

@@ -15,7 +15,7 @@ public interface RsvpRepository extends JpaRepository<Rsvp, Long> {
     long countByPresenceFalse();
     long countByMairieTrue();
     long countByEgliseTrue();
-    long countByVindhonneurTrue();
+    long countByVinDHonneurTrue();
     long countByReceptionTrue();
 
     @Query("select coalesce(sum(r.enfants), 0) from Rsvp r")
