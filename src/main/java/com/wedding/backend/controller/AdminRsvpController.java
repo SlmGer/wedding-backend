@@ -1,5 +1,6 @@
 package com.wedding.backend.controller;
 
+import com.wedding.backend.dto.RsvpStats;
 import com.wedding.backend.model.Rsvp;
 import com.wedding.backend.service.RsvpService;
 import org.springframework.web.bind.annotation.*;
@@ -25,5 +26,10 @@ public class AdminRsvpController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         rsvpService.delete(id);
+    }
+
+    @GetMapping("/stats")
+    public RsvpStats stats() {
+        return rsvpService.getStats();
     }
 }

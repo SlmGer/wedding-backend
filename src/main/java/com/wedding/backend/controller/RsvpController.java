@@ -40,10 +40,4 @@ public class RsvpController {
     public List<Rsvp> getAll(){
         return rsvpService.findAll();
     }
-
-    @GetMapping("/stats")
-    public RsvpStats stats() {
-        return rsvpService.getStats();
-    }
-
 }
