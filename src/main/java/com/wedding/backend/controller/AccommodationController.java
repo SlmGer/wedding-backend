@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin/accommodations")
-@CrossOrigin("*")
+@CrossOrigin(origins = "https://mariage-gerardine-et-esaie.vercel.app")
 public class AccommodationController {
     private final AccommodationService accommodationService;
 

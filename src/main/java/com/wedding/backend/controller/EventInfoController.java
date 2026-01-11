@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/event")
 @RequiredArgsConstructor
-@CrossOrigin("*")
+@CrossOrigin(origins = "https://mariage-gerardine-et-esaie.vercel.app")
 public class EventInfoController {
     private final EventInfoService eventInfoService;
 

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin("*")
+@CrossOrigin(origins = "https://mariage-gerardine-et-esaie.vercel.app")
 public class AuthController {
     @Value("${wedding.guest.password}")
     private String guestPassword;

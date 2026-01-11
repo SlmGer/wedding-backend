@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/guests")
 @RequiredArgsConstructor
-@CrossOrigin("*")
+@CrossOrigin(origins = "https://mariage-gerardine-et-esaie.vercel.app")
 public class GuestController {
 
     private final GuestService guestService;
