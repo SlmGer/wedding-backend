@@ -11,8 +11,8 @@ public interface RsvpRepository extends JpaRepository<Rsvp, Long> {
 
     boolean existsByGuestNameIgnoreCase(String guestName);
 
-    long countByPresenceTrue();
-    long countByPresenceFalse();
+    long countByPresentTrue();
+    long countByPresentFalse();
     long countByMairieTrue();
     long countByEgliseTrue();
     long countByVinDHonneurTrue();

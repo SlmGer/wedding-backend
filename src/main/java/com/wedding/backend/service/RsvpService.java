@@ -71,8 +71,8 @@ public class RsvpService {
 
         return new RsvpStats(
                 total,
-                rsvpRepository.countByPresenceTrue(),
-                rsvpRepository.countByPresenceFalse(),
+                rsvpRepository.countByPresentTrue(),
+                rsvpRepository.countByPresentFalse(),
                 rsvpRepository.sumEnfants(),
                 rsvpRepository.countByMairieTrue(),
                 rsvpRepository.countByEgliseTrue(),
