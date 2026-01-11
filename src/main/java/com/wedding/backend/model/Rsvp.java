@@ -15,12 +15,9 @@ public class Rsvp {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
-    private String guestName;
-
-    /*@OneToOne
+    @OneToOne
     @JoinColumn(name = "guest_id", nullable = false)
-    private Guest guest;*/
+    private Guest guest;
 
     private boolean present;
 
@@ -30,7 +27,7 @@ public class Rsvp {
     private boolean vegetarien;
     private boolean halal;
     private boolean casher;
-    private boolean sansAllergenes;
+    private boolean sansAllergene;
 
     // lieux
     private boolean mairie;

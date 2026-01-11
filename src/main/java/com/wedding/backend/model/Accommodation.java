@@ -14,12 +14,12 @@ public class Accommodation {
     private Long id;
 
     private String name;
-    private String type;
-    private String address;
-    private String distance;
-    private String googleMapsUrl;
-    private String bookingUrl;
+
     private String imageUrl;
 
-    private boolean active = true;
+    private String googleMapsUrl;
+
+    private double distanceKm;
+
+    //private boolean active = true;
 }

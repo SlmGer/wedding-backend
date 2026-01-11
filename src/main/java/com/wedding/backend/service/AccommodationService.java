@@ -18,43 +18,20 @@ public class AccommodationService {
 
     public Accommodation save(AccommodationRequest accommodationRequest) {
         Accommodation accommodation = new Accommodation();
-        accommodation = this.setValues(accommodation, accommodationRequest);
+        accommodation.setName(accommodationRequest.getName());
+        accommodation.setImageUrl(accommodationRequest.getImageUrl());
+        //accommodation.setActive(accommodationRequest.isActive());
+        accommodation.setDistanceKm(accommodationRequest.getDistanceKm());
+        accommodation.setGoogleMapsUrl(accommodationRequest.getGoogleMapsUrl());
         accommodationRepository.save(accommodation);
         return accommodation;
     }
-
-    public Accommodation update(Long id, AccommodationRequest updated) {
-        Accommodation existing = accommodationRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Accommodation not found"));
-
-        existing = this.setValues(existing, updated);
-
-        return accommodationRepository.save(existing);
-    }
-
 
     public List<Accommodation> findAll(){
         return accommodationRepository.findAll();
     }
 
-    public Accommodation findById(Long id){
-        return accommodationRepository.findById(id).orElseThrow();
-    }
-
     public void deleteById(Long id) {
         accommodationRepository.deleteById(id);
-    }
-
-    public Accommodation setValues(Accommodation accommodation, AccommodationRequest accommodationRequest) {
-        accommodation.setName(accommodationRequest.getName());
-        accommodation.setType(accommodationRequest.getType());
-        accommodation.setAddress(accommodationRequest.getAddress());
-        accommodation.setDistance(accommodationRequest.getDistance());
-        accommodation.setGoogleMapsUrl(accommodationRequest.getGoogleMapsUrl());
-        accommodation.setBookingUrl(accommodationRequest.getBookingUrl());
-        accommodation.setImageUrl(accommodationRequest.getImageUrl());
-        accommodation.setActive(accommodationRequest.isActive());
-
-        return accommodation;
     }
 }

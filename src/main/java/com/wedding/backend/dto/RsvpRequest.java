@@ -6,8 +6,8 @@ import lombok.Setter;
 @Setter
 @Getter
 public class RsvpRequest {
-    private String guestName;
-    //private String email;
+    private String nom;
+    private String email;
 
     private boolean present;
     private Integer enfants;
@@ -15,15 +15,14 @@ public class RsvpRequest {
     private boolean vegetarien;
     private boolean halal;
     private boolean casher;
-    private boolean sansAllergenes;
+    private boolean sansAllergene;
 
     private boolean mairie;
     private boolean eglise;
-    private boolean vinDHonneur;
     private boolean reception;
 
-    private boolean vehicule;
-    private boolean covoiturage;
+    private Boolean vehicule;
+    private Boolean covoiturage;
 
     private String remarque;
 

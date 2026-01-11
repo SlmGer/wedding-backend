@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin/accommodations")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 public class AccommodationController {
     private final AccommodationService accommodationService;
 
@@ -22,23 +22,10 @@ public class AccommodationController {
         return accommodationService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Accommodation getOne(@PathVariable Long id) {
-        return accommodationService.findById(id);
-    }
-
     @PostMapping
     public Accommodation add(@RequestBody AccommodationRequest acc){
         return accommodationService.save(acc);
     }
-
-    @PutMapping("/{id}")
-    public Accommodation update(
-            @PathVariable Long id,
-            @RequestBody AccommodationRequest accommodation) {
-        return accommodationService.update(id, accommodation);
-    }
-
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
