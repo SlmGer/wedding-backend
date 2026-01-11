@@ -61,4 +61,8 @@ public class RsvpService {
     public List<Rsvp> findAll() {
         return rsvpRepository.findAll();
     }
+
+    public void delete(Long id) {
+        rsvpRepository.deleteById(id);
+    }
 }

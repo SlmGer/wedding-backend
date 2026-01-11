@@ -2,10 +2,7 @@ package com.wedding.backend.controller;
 
 import com.wedding.backend.model.Rsvp;
 import com.wedding.backend.service.RsvpService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +20,10 @@ public class AdminRsvpController {
     @GetMapping
     public List<Rsvp> getAll() {
         return rsvpService.findAll();
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        rsvpService.delete(id);
     }
 }
