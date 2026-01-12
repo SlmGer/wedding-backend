@@ -7,6 +7,8 @@ import lombok.Setter;
 @Getter
 public class AccommodationRequest {
     private String name;
+    private String type;
+    private String address;
     private String imageUrl;
     private String googleMapsUrl;
     private Integer distance;

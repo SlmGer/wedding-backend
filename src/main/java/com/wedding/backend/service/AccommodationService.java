@@ -32,6 +32,8 @@ public class AccommodationService {
 
     private void applyRequest(Accommodation accommodation, AccommodationRequest request) {
         accommodation.setName(request.getName());
+        accommodation.setType(request.getType());
+        accommodation.setAddress(request.getAddress());
         accommodation.setImageUrl(request.getImageUrl());
         accommodation.setGoogleMapsUrl(request.getGoogleMapsUrl());
         accommodation.setDistance(request.getDistance());

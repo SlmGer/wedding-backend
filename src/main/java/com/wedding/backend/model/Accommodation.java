@@ -15,6 +15,10 @@ public class Accommodation {
 
     private String name;
 
+    private String type;
+
+    private String address;
+
     private String imageUrl;
 
     private String googleMapsUrl;
