@@ -21,8 +21,8 @@ public class RsvpRequest {
     private boolean vinDHonneur;
     private boolean reception;
 
-    private boolean vehicule;
-    private boolean covoiturage;
+    private Boolean vehicule;
+    private Boolean covoiturage;
 
     private String remarque;
 

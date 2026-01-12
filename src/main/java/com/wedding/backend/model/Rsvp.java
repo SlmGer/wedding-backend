@@ -32,8 +32,8 @@ public class Rsvp {
     private boolean reception;
 
     // transport
-    private boolean vehicule;
-    private boolean covoiturage;
+    private Boolean vehicule;
+    private Boolean covoiturage;
 
     @Column(length = 500)
     private String remarque;
