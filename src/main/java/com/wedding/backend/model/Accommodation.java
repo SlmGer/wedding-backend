@@ -23,7 +23,7 @@ public class Accommodation {
 
     private String googleMapsUrl;
 
-    private Integer distance;
+    private String distance;
 
     private boolean active = true;
 }

@@ -11,7 +11,7 @@ public class AccommodationRequest {
     private String address;
     private String imageUrl;
     private String googleMapsUrl;
-    private Integer distance;
+    private String distance;
 
     private boolean active = true;
 }
