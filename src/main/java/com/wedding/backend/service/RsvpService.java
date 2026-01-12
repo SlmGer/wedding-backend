@@ -52,8 +52,8 @@ public class RsvpService {
         rsvp.setVinDHonneur(request.isVinDHonneur());
         rsvp.setReception(request.isReception());
 
-        rsvp.setVehicule(request.isVehicule());
-        rsvp.setCovoiturage(request.isCovoiturage());
+        rsvp.setVehicule(request.getVehicule());
+        rsvp.setCovoiturage(request.getCovoiturage());
 
         rsvp.setRemarque(request.getRemarque());
     }
