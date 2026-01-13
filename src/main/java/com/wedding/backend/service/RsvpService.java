@@ -74,10 +74,16 @@ public class RsvpService {
                 rsvpRepository.countByPresentTrue(),
                 rsvpRepository.countByPresentFalse(),
                 rsvpRepository.sumEnfants(),
+                rsvpRepository.countByVegetarienTrue(),
+                rsvpRepository.countByHalalTrue(),
+                rsvpRepository.countByCasherTrue(),
+                rsvpRepository.countBySansAllergeneTrue(),
                 rsvpRepository.countByMairieTrue(),
                 rsvpRepository.countByEgliseTrue(),
                 rsvpRepository.countByVinDHonneurTrue(),
-                rsvpRepository.countByReceptionTrue()
+                rsvpRepository.countByReceptionTrue(),
+                rsvpRepository.countByVehiculeTrue(),
+                rsvpRepository.countByCovoiturageTrue()
         );
     }
 

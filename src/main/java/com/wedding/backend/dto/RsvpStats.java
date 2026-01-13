@@ -5,8 +5,14 @@ public record RsvpStats(
     long present,
     long absent,
     long enfants,
+    long vegetarien,
+    long halal,
+    long casher,
+    long sansAllergene,
     long mairie,
     long eglise,
     long vindhonneur,
-    long reception
+    long reception,
+    long vehicule,
+    long covoiturage
 ){}
