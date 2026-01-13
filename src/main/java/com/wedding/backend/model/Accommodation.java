@@ -23,6 +23,8 @@ public class Accommodation {
 
     private String googleMapsUrl;
 
+    private String bookingUrl;
+
     private String distance;
 
     private boolean active = true;

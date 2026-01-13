@@ -36,6 +36,7 @@ public class AccommodationService {
         accommodation.setAddress(request.getAddress());
         accommodation.setImageUrl(request.getImageUrl());
         accommodation.setGoogleMapsUrl(request.getGoogleMapsUrl());
+        accommodation.setBookingUrl(request.getBookingUrl());
         accommodation.setDistance(request.getDistance());
 
         if (request.isActive()) {
