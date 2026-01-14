@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
     @Value("${wedding.guest.password}")
     private String guestPassword;
+    @Value("${wedding.family.password}")
+    private String familyPassword;
 
     @Value("${wedding.admin.password}")
     private String adminPassword;
@@ -19,6 +21,9 @@ public class AuthController {
     public LoginResponse login(@RequestBody LoginRequest request) {
         if(guestPassword.equals(request.getPassword())) {
             return new LoginResponse(true, "GUEST");
+        }
+        if(familyPassword.equals(request.getPassword())) {
+            return new LoginResponse(true, "FAMILY");
         }
         if(adminPassword.equals(request.getPassword())) {
             return new LoginResponse(true, "ADMIN");
